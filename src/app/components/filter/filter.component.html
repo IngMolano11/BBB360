@@ -1,1 +1,33 @@
-<p>filter works!</p>
+<!-- filter.component.html -->
+<div class="filter-container">
+  <button type="button" class="filter-button" (click)="toggleFilter()">
+    Rango de precio
+  </button>
+
+  <div *ngIf="showRanges" class="ranges-container">
+    <button type="button" class="range-button">
+      De 1.000 COP a 1.500.000 COP
+    </button>
+    <button type="button" class="range-button">
+      De 1.500.001 COP a 3.000.000 COP
+    </button>
+    <button type="button" class="range-button">
+      De 3.000.001 COP a 4.500.000 COP
+    </button>
+    <button type="button" class="range-button">
+      De 4.500.001 COP a 6.000.000 COP
+    </button>
+    <button type="button" class="range-button">
+      De 6.000.001 COP a 7.500.000 COP
+    </button>
+    <button type="button" class="range-button">
+      De 7.500.001 COP a 9.000.000 COP
+    </button>
+    <button type="button" class="range-button">
+      De 9.000.001 COP a 10.500.000 COP
+    </button>
+    <button type="button" class="range-button">
+      De 10.500.001 COP a 12.000.000 COP
+    </button>
+  </div>
+</div>

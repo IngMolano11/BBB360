@@ -1,0 +1,80 @@
+/* filter.component.css */
+
+/* Contenedor general del filtro */
+.filter-container {
+  background: #f2f7fb; /* Mismo fondo que el contenedor principal */
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Botón principal para desplegar los rangos */
+.filter-button {
+  background-color: #ffcc00;
+  border: none;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.filter-button:hover {
+  background-color: #e0ac00;
+  transform: scale(1.05);
+}
+
+/* Contenedor de los botones de rango */
+.ranges-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: slideDown 0.5s ease-out;
+}
+
+/* Estilo para cada botón de rango */
+.range-button {
+  background-color: #f0f7ff; /* Sutil fondo similar a los enlaces en tarjetas */
+  border: 2px solid #ffcc00;
+  color: #333;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.range-button:hover {
+  background-color: #e0f0ff;
+  border-color: #e0ac00;
+  transform: scale(1.03);
+}
+
+/* Animación para el fade in del contenedor */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación para que los rangos se deslicen hacia abajo */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
