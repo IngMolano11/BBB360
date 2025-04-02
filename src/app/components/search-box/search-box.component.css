@@ -1,0 +1,71 @@
+/* Fondo del contenedor y efecto fade-in */
+.container-fluid {
+  background-color: #93e1f5;
+  padding: 10px 20px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Estilo para el logo con efecto hover */
+.col-auto img {
+  height: 85px;
+  transition: transform 0.5s ease;
+}
+
+.col-auto img:hover {
+  transform: scale(1.1);
+}
+
+/* Estilos para la barra de búsqueda */
+.input-group input.form-control {
+  border-radius: 30px 0 0 30px;
+  transition: box-shadow 0.3s ease;
+}
+
+.input-group input.form-control:focus {
+  box-shadow: 0 0 8px #259dad;
+}
+
+/* Botón de búsqueda con animación y cambio de color en hover */
+.input-group button.btn {
+  border-radius: 0 30px 30px 0;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  background-color: #ffbf00; /* Puedes ajustar el color que desees */
+  border: none;
+}
+
+.input-group button.btn:hover {
+  background-color: #e0ac00;
+  transform: scale(1.05);
+}
+
+/* Animación para los enlaces de navegación */
+.nav .nav-item .nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Efecto subrayado animado al pasar el mouse */
+.nav .nav-item .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -5px;
+  background-color: #ffbf00;
+  transition: width 0.3s ease;
+}
+
+.nav .nav-item .nav-link:hover {
+  color: #ffbf00;
+}
+
+.nav .nav-item .nav-link:hover::after {
+  width: 100%;
+}
