@@ -1,33 +1,69 @@
 <!-- filter.component.html -->
 <div class="filter-container">
-  <button type="button" class="filter-button" (click)="toggleFilter()">
+  <button type="button" class="filter-button" [class.active]="showRanges" (click)="toggleFilter1()">
     Rango de precio
   </button>
 
   <div *ngIf="showRanges" class="ranges-container">
     <button type="button" class="range-button">
-      De 1.000 COP a 1.500.000 COP
+      1.000 - 1.5M COP
     </button>
     <button type="button" class="range-button">
-      De 1.500.001 COP a 3.000.000 COP
+      1.5M - 3M COP
     </button>
     <button type="button" class="range-button">
-      De 3.000.001 COP a 4.500.000 COP
+      3M - 4.5M COP
     </button>
     <button type="button" class="range-button">
-      De 4.500.001 COP a 6.000.000 COP
+      4.5M - 6M COP
     </button>
     <button type="button" class="range-button">
-      De 6.000.001 COP a 7.500.000 COP
+      6M - 7.5M COP
     </button>
     <button type="button" class="range-button">
-      De 7.500.001 COP a 9.000.000 COP
+      7.5M - 9M COP
     </button>
     <button type="button" class="range-button">
-      De 9.000.001 COP a 10.500.000 COP
+      9M - 10.5M COP
     </button>
     <button type="button" class="range-button">
-      De 10.500.001 COP a 12.000.000 COP
+      10.5M - 12MCOP
     </button>
+  </div>
+</div>
+
+<div class="filter-container">
+  <button type="button" class="filter-button" [class.active]="showBrand" (click)="toggleFilter2()">
+    Marca
+  </button>
+  <div *ngIf="showBrand" class="ranges-container">
+    <button type="button" class="range-button">Samsung</button>
+    <button type="button" class="range-button">Xiaomi</button>
+    <button type="button" class="range-button">Apple</button>
+    <button type="button" class="range-button">Huawei</button>
+    <button type="button" class="range-button">Honor</button>
+  </div>
+</div>
+
+<div class="filter-container">
+  <button type="button" class="filter-button" [class.active]="showCategories" (click)="toggleFilter3()">
+    Categorias
+  </button>
+  <div *ngIf="showCategories" class="ranges-container">
+    <button type="button" class="range-button">Celulares</button>
+    <button type="button" class="range-button">Laptops</button>
+    <button type="button" class="range-button">Tv</button>
+    <button type="button" class="range-button">Relojes</button>
+    <button type="button" class="range-button">Impresora</button>
+  </div>
+</div>
+
+<div class="filter-container">
+  <button type="button" class="filter-button" [class.active]="showFreeShipping" (click)="toggleFilter4()">
+    Envios Gratis
+  </button>
+  <div *ngIf="showFreeShipping" class="ranges-container">
+    <button type="button" class="range-button">Si</button>
+    <button type="button" class="range-button">No</button>
   </div>
 </div>

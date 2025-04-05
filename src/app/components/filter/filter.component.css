@@ -2,11 +2,11 @@
 
 /* Contenedor general del filtro */
 .filter-container {
-  background: #f2f7fb; /* Mismo fondo que el contenedor principal */
+  background: #f2f7fb;
   border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
   animation: fadeIn 0.5s ease-out;
 }
 
@@ -15,51 +15,89 @@
   background-color: #ffcc00;
   border: none;
   color: #333;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  padding: 10px 20px;
-  border-radius: 30px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  display: block;
-  margin: 0 auto 20px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 0;
 }
 
 .filter-button:hover {
   background-color: #e0ac00;
-  transform: scale(1.05);
+  transform: translateY(-1px);
+}
+
+.filter-button:after {
+  content: "▼";
+  font-size: 0.7rem;
+  transition: transform 0.3s ease;
+}
+
+.filter-button.active:after {
+  transform: rotate(180deg);
 }
 
 /* Contenedor de los botones de rango */
 .ranges-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  animation: slideDown 0.5s ease-out;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  margin-top: 10px;
+  animation: slideDown 0.4s ease-out;
+}
+
+/* Para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .ranges-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Estilo para cada botón de rango */
 .range-button {
-  background-color: #f0f7ff; /* Sutil fondo similar a los enlaces en tarjetas */
-  border: 2px solid #ffcc00;
-  color: #333;
-  font-size: 0.9rem;
-  font-weight: 500;
-  padding: 8px 16px;
-  border-radius: 30px;
-  transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+  background-color: #f5f8fb;
+  border: 1px solid #e0e0e0;
+  color: #555;
+  font-size: 0.8rem;
+  font-weight: 400;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .range-button:hover {
-  background-color: #e0f0ff;
-  border-color: #e0ac00;
-  transform: scale(1.03);
+  background-color: #f0f7ff;
+  border-color: #ffcc00;
+  color: #333;
+  transform: translateY(-1px);
+}
+
+.range-button.selected {
+  background-color: #fff7e0;
+  border-color: #ffcc00;
+  color: #333;
+  font-weight: 500;
 }
 
 /* Animación para el fade in del contenedor */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-5px);
   }
   to {
     opacity: 1;
@@ -71,7 +109,7 @@
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateY(-15px);
+    transform: translateY(-8px);
   }
   to {
     opacity: 1;

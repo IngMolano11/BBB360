@@ -9,8 +9,23 @@ import { Component } from '@angular/core';
 })
 export class FilterComponent {
   showRanges = false;
+  showBrand = false;
+  showCategories = false;
+  showFreeShipping = false;
 
-  toggleFilter(): void {
+  toggleFilter1(): void {
     this.showRanges = !this.showRanges;
+  }
+
+  toggleFilter2(): void {
+    this.showBrand = !this.showBrand;
+  }
+
+  toggleFilter3(): void {
+    this.showCategories = !this.showCategories;
+  }
+
+  toggleFilter4(): void {
+    this.showFreeShipping = !this.showFreeShipping;
   }
 }

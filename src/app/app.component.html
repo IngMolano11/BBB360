@@ -4,12 +4,24 @@
       <app-search-box></app-search-box>
     </div>
   </div>
+
   <div class="row" style="height: 80%;">
-    <div class="col" style="flex: 0 0 30%;">
-      <app-filter></app-filter>
-    </div>
-    <div class="col" style="flex: 0 0 70%;">
-      <app-result-box></app-result-box>
+    <!-- Botón lateral para mostrar/ocultar el filtro -->
+    <button class="toggle-filter-btn" (click)="toggleFilter()">
+      {{ showFilter ? 'Ocultar' : 'Filtros' }}
+    </button>
+
+    <!-- Contenedor principal con la lógica de columnas -->
+    <div class="main-content">
+      <!-- Filtro visible solo si showFilter es true -->
+      <div *ngIf="showFilter" class="filter-container">
+        <app-filter></app-filter>
+      </div>
+
+      <!-- Resultado ocupa el 100% si el filtro está oculto -->
+      <div class="result-container" [ngClass]="{'full-width': !showFilter}">
+        <app-result-box></app-result-box>
+      </div>
     </div>
   </div>
 </div>
