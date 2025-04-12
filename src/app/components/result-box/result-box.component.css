@@ -1,14 +1,16 @@
+/* result-box.component.css - Diseño responsive */
+
 .custom-container {
   background: #f2f7fb;
   border-radius: 8px;
-  padding: 20px;
+  padding: 15px;
   height: 100%;
   max-height: 100%;
   overflow-y: auto;
-  overflow-x: auto;
+  overflow-x: hidden; /* Cambiado a hidden por defecto */
   box-sizing: border-box;
   position: relative;
-  margin-bottom: 0; /* Eliminar cualquier margen inferior */
+  margin-bottom: 0;
 }
 
 /* Efecto de sombra neón azul girando alrededor del contenedor */
@@ -29,10 +31,9 @@
   );
   z-index: -1;
   animation: rotate 30s linear infinite;
-  opacity: 1;
-  box-shadow: 0 0 100px rgba(0, 128, 255, 0.9);
+  opacity: 0.8; /* Reducido para mobile */
+  box-shadow: 0 0 40px rgba(0, 128, 255, 0.6); /* Reducido para mobile */
 }
-
 
 .custom-container::after {
   content: "";
@@ -56,144 +57,168 @@
   }
 }
 
-/* Mantener estilos de títulos */
+/* Títulos responsive */
 .main-title {
-  font-size: 1.6rem;
+  font-size: 1.3rem; /* Tamaño reducido para móvil */
   font-weight: bold;
   color: #333333;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   position: relative;
   display: inline-block;
+  text-align: center;
+  width: 100%;
 }
 
 .main-title:after {
   content: '';
   position: absolute;
-  width: 100%;
+  width: 80%; /* Ancho reducido en móvil */
   height: 3px;
   background: linear-gradient(to right, #ffcc00, rgba(255, 204, 0, 0.3));
   bottom: -6px;
-  left: 0;
+  left: 10%; /* Centrado */
 }
 
 .sub-title {
-  font-size: 1.1rem;
+  font-size: 0.95rem; /* Tamaño reducido para móvil */
   font-weight: 500;
   color: #555555;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
-/* Botones más grandes */
+/* Botones adaptativos */
 .option-btn {
   transition: background-color 0.3s ease, transform 0.3s ease;
   background-color: #ffcc00;
   border-color: #ffcc00;
   color: #333;
   font-weight: 600;
-  padding: 8px 20px; /* Aumentado de 6px 16px */
+  padding: 6px 14px; /* Tamaño reducido para móvil */
   border-radius: 30px;
-  margin-bottom: 15px;
-  font-size: 1rem; /* Aumentado de 0.9rem */
+  margin: 0 5px 10px;
+  font-size: 0.85rem; /* Tamaño reducido para móvil */
 }
 
-.option-btn:hover {
+.option-btn:hover, .option-btn:active {
   background-color: #e0ac00;
   transform: scale(1.05);
   border-color: #e0ac00;
 }
 
-/* Mantener contenedor de scroll */
+/* Contenedor de tarjetas scrollable - adaptativo */
 .img-scroll-container {
   overflow-x: auto;
   white-space: nowrap;
   padding-bottom: 15px;
   padding-top: 10px;
   display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 0; /* Eliminar cualquier margen inferior */
+  gap: 10px; /* Reducido en móvil */
+  margin-bottom: 0;
+  /* Mejora del scroll en táctil */
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 10px;
 }
 
-/* Mantener estilos de tarjetas */
+/* Tarjetas adaptativas */
 .card-option {
   background-color: #f7faff;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  padding: 15px;
+  padding: 12px; /* Reducido en móvil */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 200px;
+  min-width: 160px; /* Tamaño mínimo en móvil */
+  max-width: 160px; /* Tamaño máximo en móvil */
   display: inline-block;
   vertical-align: top;
   text-align: center;
-  margin-bottom: 0; /* Eliminar cualquier margen inferior */
+  margin-bottom: 0;
+  /* Mejora del scroll snap */
+  scroll-snap-align: start;
 }
 
 .card-option:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+  transform: translateY(-4px); /* Reducido en móvil */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 
 .card-option:nth-child(1) {
-  border-top: 4px solid #28a745;
+  border-top: 3px solid #28a745;
 }
 
 .card-option:nth-child(2) {
-  border-top: 4px solid #ffc107;
+  border-top: 3px solid #ffc107;
 }
 
 .card-option:nth-child(3) {
-  border-top: 4px solid #dc3545;
+  border-top: 3px solid #dc3545;
 }
 
-/* Mantener estilos de imágenes */
+/* Imágenes adaptativas */
 .card-img {
-  width: 160px;
-  height: 160px;
+  width: 130px; /* Tamaño reducido en móvil */
+  height: 130px; /* Tamaño reducido en móvil */
   object-fit: cover;
   border-radius: 8px;
   transition: all 0.4s ease;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Reducido en móvil */
 }
 
 .card-img:hover {
   transform: scale(1.03);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-/* Mantener estilos de textos en tarjetas */
+/* Textos adaptativos */
 .card-option h3 {
-  margin-top: 12px;
-  font-size: 1rem;
+  margin-top: 10px;
+  font-size: 0.9rem; /* Reducido en móvil */
   font-weight: 600;
   color: #333;
+  white-space: normal; /* Permitir wrap en títulos */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  max-height: 2.8em;
 }
 
 .card-option p {
   color: #666;
-  margin-bottom: 12px;
-  font-size: 0.85rem;
+  margin-bottom: 10px;
+  font-size: 0.8rem; /* Reducido en móvil */
+  white-space: normal; /* Permitir wrap en descripciones */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  max-height: 2.6em;
 }
 
-/* Mantener estilos de enlaces */
+/* Enlaces adaptativos */
 .card-link {
   color: #007bff;
   text-decoration: none;
   transition: all 0.3s ease;
   display: inline-block;
-  padding: 5px 14px;
+  padding: 4px 12px;
   border-radius: 20px;
   background-color: #f0f7ff;
   font-weight: 500;
-  font-size: 0.85rem;
+  font-size: 0.8rem; /* Reducido en móvil */
+  margin-top: 5px;
 }
 
 .card-link:hover {
   color: #0056b3;
   background-color: #e0f0ff;
-  box-shadow: 0 2px 5px rgba(0,83,179,0.1);
+  box-shadow: 0 2px 4px rgba(0,83,179,0.1);
 }
 
-/* Para eliminar espacios adicionales */
+/* Eliminar espacios innecesarios */
 .row {
   margin-bottom: 0;
 }
@@ -202,19 +227,147 @@
   padding-bottom: 0;
 }
 
-/* Para pantallas móviles */
-@media (max-width: 768px) {
+/* Media queries para tablets */
+@media (min-width: 576px) {
+  .custom-container {
+    padding: 18px;
+  }
+
+  .custom-container::before {
+    opacity: 0.9;
+    box-shadow: 0 0 60px rgba(0, 128, 255, 0.7);
+  }
+
+  .main-title {
+    font-size: 1.4rem;
+  }
+
+  .main-title:after {
+    width: 90%;
+    left: 5%;
+  }
+
+  .sub-title {
+    font-size: 1rem;
+  }
+
+  .option-btn {
+    padding: 7px 16px;
+    font-size: 0.9rem;
+    margin: 0 8px 12px;
+  }
+
   .img-scroll-container {
-    justify-content: flex-start;
-    padding-left: 10px;
+    gap: 12px;
   }
 
   .card-option {
-    width: 180px;
+    min-width: 180px;
+    max-width: 180px;
+    padding: 14px;
   }
 
   .card-img {
     width: 150px;
     height: 150px;
+  }
+
+  .card-option h3 {
+    font-size: 0.95rem;
+  }
+
+  .card-option p {
+    font-size: 0.85rem;
+  }
+
+  .card-link {
+    font-size: 0.85rem;
+  }
+}
+
+/* Media queries para desktop */
+@media (min-width: 992px) {
+  .custom-container {
+    padding: 20px;
+    overflow-x: hidden;
+  }
+
+  .custom-container::before {
+    opacity: 1;
+    box-shadow: 0 0 100px rgba(0, 128, 255, 0.9);
+  }
+
+  .main-title {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+  }
+
+  .main-title:after {
+    width: 100%;
+    left: 0;
+  }
+
+  .sub-title {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+  .option-btn {
+    padding: 8px 20px;
+    font-size: 1rem;
+    margin: 0 10px 15px;
+  }
+
+  .img-scroll-container {
+    gap: 15px;
+    justify-content: center;
+  }
+
+  .card-option {
+    min-width: 200px;
+    max-width: 200px;
+    padding: 15px;
+  }
+
+  .card-option:hover {
+    transform: translateY(-6px);
+  }
+
+  .card-img {
+    width: 160px;
+    height: 160px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  .card-option h3 {
+    font-size: 1rem;
+    margin-top: 12px;
+  }
+
+  .card-option p {
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+  }
+
+  .card-link {
+    padding: 5px 14px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Media queries para pantallas grandes */
+@media (min-width: 1400px) {
+  .card-option {
+    min-width: 220px;
+    max-width: 220px;
+  }
+
+  .card-img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .img-scroll-container {
+    gap: 20px;
   }
 }

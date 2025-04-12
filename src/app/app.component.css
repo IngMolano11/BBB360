@@ -1,4 +1,6 @@
-/* Estilos para el contenedor principal */
+/* app.component.css */
+
+/* Contenedor principal con enfoque mobile-first */
 .main-content {
   display: flex;
   width: 100%;
@@ -7,39 +9,50 @@
   overflow-x: hidden;
 }
 
-/* Estilos para el botón de filtro - ahora más pequeño */
+/* Toggle filter button - versión adaptativa */
 .toggle-filter-btn {
   position: fixed;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%) rotate(180deg);
-  writing-mode: vertical-rl;
-  padding: 15px 5px;
-  width: 30px; /* Ancho del botón reducido */
   background-color: #FFCC00;
   color: #333;
   border: none;
-  border-radius: 15px 0px 0px 15px;
   cursor: pointer;
   z-index: 1000;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
   font-weight: bold;
-  font-size: 0.9rem;
+
+  /* Versión para móvil por defecto */
+  left: 0;
+  top: 150px;
+  transform: none;
+  writing-mode: horizontal-tb;
+  padding: 8px 12px;
+  width: auto;
+  border-radius: 0 15px 15px 0;
+  font-size: 0.85rem;
 }
 
 .toggle-filter-btn:hover {
   background-color: #FFA500;
 }
 
-/* Estilos para el contenedor de filtros con animación */
+/* Filtro container - versión adaptativa */
 .filter-container {
-  width: 25%;
   background-color: #f8f9fa;
   padding: 15px;
   border-right: 1px solid #ddd;
   position: relative;
   animation: slideIn 0.4s ease forwards;
+
+  /* Versión para móvil por defecto */
+  width: 85%;
+  max-width: 300px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 1001;
+  overflow-y: auto;
 }
 
 /* Animación para mostrar el filtro */
@@ -71,20 +84,76 @@
   }
 }
 
-/* Estilos para el contenedor de resultados */
-.result-container {
-  width: 75%;
-  padding: 15px;
-  transition: width 0.4s ease;
+/* Overlay para cuando el filtro está activo en móvil */
+.filter-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: none;
 }
 
-/* Cuando el filtro está oculto, el resultado ocupa todo el ancho */
+.filter-overlay.active {
+  display: block;
+}
+
+/* Contenedor de resultados adaptativo */
+.result-container {
+  width: 100%;
+  padding: 10px;
+  transition: all 0.4s ease;
+}
+
+/* Cuando el filtro está oculto, mantener ancho completo */
 .result-container.full-width {
   width: 100%;
 }
 
-/* Estilo específico para que coincida con la estética mostrada en la captura */
+/* Estilo específico para que coincida con la estética mostrada */
 .filter-container app-filter {
   display: block;
   padding-top: 10px;
+}
+
+/* Media queries para tablets */
+@media (min-width: 768px) {
+  .toggle-filter-btn {
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+    writing-mode: vertical-rl;
+    padding: 15px 5px;
+    width: 30px;
+    border-radius: 15px 0px 0px 15px;
+    font-size: 0.9rem;
+  }
+
+  .filter-container {
+    width: 280px;
+    position: relative;
+    height: auto;
+  }
+
+  .result-container {
+    width: calc(100% - 280px);
+    padding: 15px;
+  }
+
+  .filter-overlay {
+    display: none !important;
+  }
+}
+
+/* Media queries para pantallas grandes */
+@media (min-width: 1200px) {
+  .filter-container {
+    width: 320px;
+  }
+
+  .result-container {
+    width: calc(100% - 320px);
+    padding: 20px;
+  }
 }

@@ -1,24 +1,29 @@
-<div class="container-fluid" style="height: 100vh;">
-  <div class="row" style="height: 17%;">
+<div class="container-fluid p-0" style="min-height: 100vh;">
+  <!-- Header area with search box -->
+  <div class="row g-0">
     <div class="col-12">
       <app-search-box></app-search-box>
     </div>
   </div>
 
-  <div class="row" style="height: 80%;">
+  <!-- Main content area -->
+  <div class="row g-0" style="min-height: calc(100vh - 150px);">
     <!-- Botón lateral para mostrar/ocultar el filtro -->
     <button class="toggle-filter-btn" (click)="toggleFilter()">
       {{ showFilter ? 'Ocultar' : 'Filtros' }}
     </button>
 
-    <!-- Contenedor principal con la lógica de columnas -->
+    <!-- Overlay para móviles cuando el filtro está activo -->
+    <div class="filter-overlay" [ngClass]="{'active': showFilter}" (click)="closeFilter()"></div>
+
+    <!-- Contenedor principal con la lógica responsive -->
     <div class="main-content">
       <!-- Filtro visible solo si showFilter es true -->
-      <div *ngIf="showFilter" class="filter-container">
+      <div *ngIf="showFilter" class="filter-container" [ngClass]="{'filter-hiding': isHidingFilter}">
         <app-filter></app-filter>
       </div>
 
-      <!-- Resultado ocupa el 100% si el filtro está oculto -->
+      <!-- Resultado ocupa el espacio disponible según responsive -->
       <div class="result-container" [ngClass]="{'full-width': !showFilter}">
         <app-result-box></app-result-box>
       </div>

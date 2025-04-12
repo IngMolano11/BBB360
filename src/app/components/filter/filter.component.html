@@ -1,69 +1,93 @@
 <!-- filter.component.html -->
 <div class="filter-container">
-  <button type="button" class="filter-button" [class.active]="showRanges" (click)="toggleFilter1()">
+  <button type="button" class="filter-button" [ngClass]="{'active': showRanges}" (click)="toggleFilter1()">
     Rango de precio
   </button>
 
   <div *ngIf="showRanges" class="ranges-container">
-    <button type="button" class="range-button">
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedPriceRange === '1000-1500000'}" (click)="selectPriceRange('1000-1500000')">
       1.000 - 1.5M COP
     </button>
-    <button type="button" class="range-button">
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedPriceRange === '1500000-3000000'}" (click)="selectPriceRange('1500000-3000000')">
       1.5M - 3M COP
     </button>
-    <button type="button" class="range-button">
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedPriceRange === '3000000-4500000'}" (click)="selectPriceRange('3000000-4500000')">
       3M - 4.5M COP
     </button>
-    <button type="button" class="range-button">
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedPriceRange === '4500000-6000000'}" (click)="selectPriceRange('4500000-6000000')">
       4.5M - 6M COP
     </button>
-    <button type="button" class="range-button">
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedPriceRange === '6000000-7500000'}" (click)="selectPriceRange('6000000-7500000')">
       6M - 7.5M COP
     </button>
-    <button type="button" class="range-button">
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedPriceRange === '7500000-9000000'}" (click)="selectPriceRange('7500000-9000000')">
       7.5M - 9M COP
     </button>
-    <button type="button" class="range-button">
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedPriceRange === '9000000-10500000'}" (click)="selectPriceRange('9000000-10500000')">
       9M - 10.5M COP
     </button>
-    <button type="button" class="range-button">
-      10.5M - 12MCOP
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedPriceRange === '10500000-12000000'}" (click)="selectPriceRange('10500000-12000000')">
+      10.5M - 12M COP
     </button>
   </div>
 </div>
 
 <div class="filter-container">
-  <button type="button" class="filter-button" [class.active]="showBrand" (click)="toggleFilter2()">
+  <button type="button" class="filter-button" [ngClass]="{'active': showBrand}" (click)="toggleFilter2()">
     Marca
   </button>
   <div *ngIf="showBrand" class="ranges-container">
-    <button type="button" class="range-button">Samsung</button>
-    <button type="button" class="range-button">Xiaomi</button>
-    <button type="button" class="range-button">Apple</button>
-    <button type="button" class="range-button">Huawei</button>
-    <button type="button" class="range-button">Honor</button>
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedBrand === 'Samsung'}" (click)="selectBrand('Samsung')">
+      Samsung
+    </button>
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedBrand === 'Xiaomi'}" (click)="selectBrand('Xiaomi')">
+      Xiaomi
+    </button>
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedBrand === 'Apple'}" (click)="selectBrand('Apple')">
+      Apple
+    </button>
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedBrand === 'Huawei'}" (click)="selectBrand('Huawei')">
+      Huawei
+    </button>
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedBrand === 'Honor'}" (click)="selectBrand('Honor')">
+      Honor
+    </button>
   </div>
 </div>
 
 <div class="filter-container">
-  <button type="button" class="filter-button" [class.active]="showCategories" (click)="toggleFilter3()">
+  <button type="button" class="filter-button" [ngClass]="{'active': showCategories}" (click)="toggleFilter3()">
     Categorias
   </button>
   <div *ngIf="showCategories" class="ranges-container">
-    <button type="button" class="range-button">Celulares</button>
-    <button type="button" class="range-button">Laptops</button>
-    <button type="button" class="range-button">Tv</button>
-    <button type="button" class="range-button">Relojes</button>
-    <button type="button" class="range-button">Impresora</button>
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedCategory === 'Celulares'}" (click)="selectCategory('Celulares')">
+      Celulares
+    </button>
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedCategory === 'Laptops'}" (click)="selectCategory('Laptops')">
+      Laptops
+    </button>
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedCategory === 'Tv'}" (click)="selectCategory('Tv')">
+      Tv
+    </button>
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedCategory === 'Relojes'}" (click)="selectCategory('Relojes')">
+      Relojes
+    </button>
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedCategory === 'Impresora'}" (click)="selectCategory('Impresora')">
+      Impresora
+    </button>
   </div>
 </div>
 
 <div class="filter-container">
-  <button type="button" class="filter-button" [class.active]="showFreeShipping" (click)="toggleFilter4()">
+  <button type="button" class="filter-button" [ngClass]="{'active': showFreeShipping}" (click)="toggleFilter4()">
     Envios Gratis
   </button>
   <div *ngIf="showFreeShipping" class="ranges-container">
-    <button type="button" class="range-button">Si</button>
-    <button type="button" class="range-button">No</button>
+    <button type="button" class="range-button" [ngClass]="{'selected': freeShipping === true}" (click)="selectFreeShipping(true)">
+      Si
+    </button>
+    <button type="button" class="range-button" [ngClass]="{'selected': freeShipping === false}" (click)="selectFreeShipping(false)">
+      No
+    </button>
   </div>
 </div>

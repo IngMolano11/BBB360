@@ -2,11 +2,15 @@
   "name": "bbb360",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
+   "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:github": "npm run delete:docs && npm run build:href && npm run copy:dist",
+    "build:href": "ng build --base-href ./",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "delete:docs": "del-cli docs",
+    "copy:dist": "copyfiles dist/country-app/browser/* ./docs -f"
   },
   "private": true,
   "dependencies": {

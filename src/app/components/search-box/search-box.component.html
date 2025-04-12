@@ -1,37 +1,73 @@
-<div class="container-fluid" style="background-color: #93e1f5;">
-  <div class="row align-items-center py-2">
-    <!-- Logo de la aplicacion -->
-     <div class="col-auto">
+<!-- search-box.component.html -->
+<div class="search-container" [ngClass]="{'recording': isRecording}">
+  <form class="search-form" (ngSubmit)="onSearch()">
+
+    <div class="col-auto">
       <img src="images/LOGO.png" alt="Logo" style="height: 60px;">
      </div>
 
-     <!-- Barra de busqueda -->
-    <div class="col">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Busca los mejores precios...">
-        <button class="btn btn-warning" type="button">
-          <img src="images/BuscarIcono.png" alt="Buscar" style="height: 25px;">
-        </button>
-      </div>
+    <input
+      type="text"
+      class="search-input"
+      placeholder="¿Qué estás buscando hoy?"
+      [(ngModel)]="searchQuery"
+      name="searchQuery"
+      [attr.aria-label]="'Buscar productos'"
+      autocomplete="off"
+    >
+
+    <div class="buttons-container">
+      <button type="submit" class="search-button">
+        <img src="images/BuscarIcono.png" alt="Buscar">
+      </button>
+
+      <!-- Boton de simulación de reconocimiento de voz -->
+      <!-- <button type="button" class="voice-button" (click)="toggleVoiceSearch()" [attr.aria-label]="'Búsqueda por voz'">
+        <svg class="mic-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+          <line x1="12" y1="19" x2="12" y2="23"></line>
+          <line x1="8" y1="23" x2="16" y2="23"></line>
+        </svg>
+      </button> -->
     </div>
+  </form>
 
-    <!-- Opciones Adicionales para el Usuario -->
-     <div class="col-auto">
-      <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="#">Ofertas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="#">Mercado Libre</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="#">Exito</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="#">Alkosto</a>
-        </li>
-      </ul>
-     </div>
+  <!-- Mensaje de error (oculto por defecto) -->
+  <div class="error-message" [ngClass]="{'visible': showError}">
+    Por favor introduce un término de búsqueda.
+  </div>
 
+  <!-- Filtros de búsqueda OPcionales, los podemos descomentar para agregarlos al componente
+  <div class="search-filters">
+    <label class="filter-option" [ngClass]="{'active': filters.freeShipping}">
+      <input type="checkbox" [(ngModel)]="filters.freeShipping">
+      Envío gratis
+    </label>
+    <label class="filter-option" [ngClass]="{'active': filters.discount}">
+      <input type="checkbox" [(ngModel)]="filters.discount">
+      Con descuento
+    </label>
+    <label class="filter-option" [ngClass]="{'active': filters.bestSeller}">
+      <input type="checkbox" [(ngModel)]="filters.bestSeller">
+      Más vendidos
+    </label>
+  </div> -->
+
+  <!-- Búsquedas populares -->
+  <div class="popular-searches">
+    <p class="popular-title">Búsquedas populares:</p>
+    <div class="popular-tags">
+      <span class="tag" (click)="setSearchTerm('iPhone 16')">iPhone 16</span>
+      <span class="tag" (click)="setSearchTerm('Samsung Galaxy')">Samsung Galaxy</span>
+      <span class="tag" (click)="setSearchTerm('Laptop Gamer')">Laptop Gamer</span>
+      <span class="tag" (click)="setSearchTerm('Smart TV')">Smart TV</span>
+      <span class="tag" (click)="setSearchTerm('Audífonos Bluetooth')">Audífonos Bluetooth</span>
+    </div>
+  </div>
+
+  <!-- Feedback de búsqueda por voz (visible solo durante grabación)  -->
+  <div *ngIf="isRecording" class="mt-3 text-center">
+    <p class="small text-primary mb-0">Escuchando... Diga su búsqueda</p>
   </div>
 </div>
