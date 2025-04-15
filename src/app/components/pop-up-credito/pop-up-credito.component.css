@@ -1,29 +1,268 @@
-/* pop-up-credito.component.css */
+/* pop-up-credito.component.css - Estilos mejorados */
 
-/* Bordes suaves al contenido del modal */
+/* Modal content con efectos visuales similares al resto de la aplicación */
 .modal-content {
   border-radius: 8px;
-}
-
-/* Estilo del botón primario para mantener la consistencia visual */
-.btn-primary {
-  background-color: #007bff;
+  background: #f2f7fb;
   border: none;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Separación entre elementos del formulario */
+/* Efecto de gradiente en el borde, similar al componente search-box */
+.modal-content::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ffcc00, #007bff, #5d06ab, #ffcc00);
+  border-radius: 10px;
+  z-index: -1;
+  animation: animateBorder 3s linear infinite;
+  background-size: 400% 400%;
+}
+
+@keyframes animateBorder {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Estilo del encabezado del modal */
+.modal-header {
+  border-bottom: 2px solid rgba(255, 204, 0, 0.3);
+  background-color: #f8f9fa;
+  padding: 15px 20px;
+}
+
+.modal-title {
+  font-weight: 600;
+  color: #333;
+  position: relative;
+  display: inline-block;
+}
+
+/* Línea de subrayado estilo FFCC00 similar a otros títulos */
+.modal-title::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, #ffcc00, rgba(255, 204, 0, 0.3));
+  bottom: -6px;
+  left: 0;
+}
+
+/* Estilo del botón cerrar */
+.btn-close {
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.btn-close:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+/* Estilo del body del modal */
+.modal-body {
+  padding: 20px;
+}
+
+/* Estilo de los inputs y selects */
+.form-control, .form-select {
+  border: 2px solid #e0e0e0;
+  border-radius: 25px;
+  padding: 10px 16px;
+  transition: all 0.3s ease;
+  background-color: white;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #ffcc00;
+  box-shadow: 0 0 0 2px rgba(255, 204, 0, 0.2);
+}
+
+/* Estilo de los labels */
+.form-label {
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+/* Estilo de los mensajes de error */
+.error-message {
+  color: #dc3545;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  padding-left: 10px;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Espacio para los inputs y márgenes consistentes */
 .mb-3 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 
-/* Centrado de contenidos */
+/* Estilos de los checkboxes */
+.tipo-interes-container {
+  display: flex;
+  gap: 20px;
+  padding: 5px 0;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+}
+
+.form-check-input {
+  margin-right: 8px;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
+.form-check-input:checked {
+  background-color: #ffcc00;
+  border-color: #ffcc00;
+}
+
+.form-check-label {
+  font-size: 0.9rem;
+  color: #555;
+  cursor: pointer;
+}
+
+/* Botón de búsqueda, consistente con otros botones de la aplicación */
+.search-button {
+  background-color: #ffcc00;
+  color: #333;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 120px;
+}
+
+.search-button:hover {
+  background-color: #e0ac00;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.search-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Animación de pulso para el botón de búsqueda */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(255, 204, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
+  }
+}
+
+/* Centrado para elementos */
 .text-center {
   text-align: center;
 }
 
-/* Diseño responsive: en dispositivos pequeños se reduce el margen del diálogo del modal */
+/* Media queries para dispositivos móviles para asegurar consistencia */
 @media (max-width: 576px) {
   .modal-dialog {
     margin: 10px;
   }
+
+  .modal-body {
+    padding: 15px;
+  }
+
+  .form-control, .form-select {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+
+  .search-button {
+    padding: 8px 15px;
+  }
+
+  .tipo-interes-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+/* Media queries para tablets */
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 500px;
+  }
+
+  .form-control, .form-select {
+    padding: 10px 16px;
+    font-size: 1rem;
+  }
+
+  .form-label {
+    font-size: 0.95rem;
+  }
+
+  .search-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+}
+
+/* Media queries para desktop */
+@media (min-width: 992px) {
+  .modal-dialog {
+    max-width: 550px;
+  }
+
+  .search-button {
+    padding: 12px 25px;
+  }
+}
+
+/* Efecto suave al aparecer el modal */
+.modal.fade .modal-dialog {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: scale(0.9);
+}
+
+.modal.show .modal-dialog {
+  transform: scale(1);
 }

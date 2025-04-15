@@ -15,23 +15,38 @@
               <option value="" disabled>Seleccione una opción</option>
               <option *ngFor="let option of financiamientoOptions" [value]="option">{{ option }}</option>
             </select>
+            <div class="error-message" *ngIf="creditoForm.get('financiamiento')?.invalid && (creditoForm.get('financiamiento')?.dirty || creditoForm.get('financiamiento')?.touched || formSubmitted)">
+              Debe seleccionar una opción de financiamiento
+            </div>
           </div>
+
           <!-- Campo para el porcentaje de interés -->
           <div class="mb-3">
             <label for="interes" class="form-label">Porcentaje de Interés</label>
-            <input type="number" class="form-control" id="interes" formControlName="interes" min="0" placeholder="Ej: 15">
+            <input type="number" class="form-control" id="interes" formControlName="interes" step="0.01" placeholder="Ej: 15">
+            <div class="error-message" *ngIf="creditoForm.get('interes')?.invalid && (creditoForm.get('interes')?.dirty || creditoForm.get('interes')?.touched || formSubmitted)">
+              <span *ngIf="creditoForm.get('interes')?.errors?.['required']">El porcentaje de interés es obligatorio</span>
+              <span *ngIf="creditoForm.get('interes')?.errors?.['min']">El porcentaje debe ser mayor o igual a cero</span>
+            </div>
           </div>
+
           <!-- Checkbox para tipo de interés -->
           <div class="mb-3">
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="ea" formControlName="ea">
-              <label class="form-check-label" for="ea">EA (Efectivo Anual)</label>
+            <div class="tipo-interes-container">
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="ea" formControlName="ea">
+                <label class="form-check-label" for="ea">EA (Efectivo Anual)</label>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="na" formControlName="na">
+                <label class="form-check-label" for="na">NA (Nominal Anual)</label>
+              </div>
             </div>
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="na" formControlName="na">
-              <label class="form-check-label" for="na">NA (Nominal Anual)</label>
+            <div class="error-message" *ngIf="!isValidInteresType() && formSubmitted">
+              Debe seleccionar al menos un tipo de interés
             </div>
           </div>
+
           <!-- Lista desplegable para plazos -->
           <div class="mb-3">
             <label for="plazo" class="form-label">Plazo (meses)</label>
@@ -39,10 +54,14 @@
               <option value="" disabled>Seleccione el plazo</option>
               <option *ngFor="let plazo of plazoOptions" [value]="plazo">{{ plazo }}</option>
             </select>
+            <div class="error-message" *ngIf="creditoForm.get('plazo')?.invalid && (creditoForm.get('plazo')?.dirty || creditoForm.get('plazo')?.touched || formSubmitted)">
+              Debe seleccionar un plazo en meses
+            </div>
           </div>
+
           <!-- Botón de Buscar centrado -->
           <div class="mb-3 text-center">
-            <button type="submit" class="btn btn-primary">Buscar</button>
+            <button type="submit" class="btn btn-primary search-button">Buscar</button>
           </div>
         </form>
       </div>
