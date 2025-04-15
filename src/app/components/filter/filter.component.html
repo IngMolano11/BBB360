@@ -52,6 +52,12 @@
     <button type="button" class="range-button" [ngClass]="{'selected': selectedBrand === 'Honor'}" (click)="selectBrand('Honor')">
       Honor
     </button>
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedBrand === 'Honor'}" (click)="selectBrand('Honor')">
+      Motorola
+    </button>
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedCategory === 'Relojes'}" (click)="selectCategory('Relojes')">
+      Otros...
+    </button>
   </div>
 </div>
 
@@ -72,8 +78,11 @@
     <button type="button" class="range-button" [ngClass]="{'selected': selectedCategory === 'Relojes'}" (click)="selectCategory('Relojes')">
       Relojes
     </button>
-    <button type="button" class="range-button" [ngClass]="{'selected': selectedCategory === 'Impresora'}" (click)="selectCategory('Impresora')">
-      Impresora
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedCategory === 'Relojes'}" (click)="selectCategory('Relojes')">
+      Tablets
+    </button>
+    <button type="button" class="range-button" [ngClass]="{'selected': selectedCategory === 'Relojes'}" (click)="selectCategory('Relojes')">
+      Otros...
     </button>
   </div>
 </div>
