@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 
+declare var bootstrap: any;
+
 @Component({
   selector: 'app-result-box',
   imports: [],
@@ -26,6 +28,14 @@ export class ResultBoxComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     // Si quieres realizar alguna acción después de que la vista se ha inicializado
     // Por ejemplo, mostrar un indicador de scroll en móviles
+  }
+
+  openCreditoModal(): void {
+    const modalElement = document.getElementById('creditoModal');
+    if (modalElement) {
+      const modal = new bootstrap.Modal(modalElement);
+      modal.show();
+    }
   }
 
   @HostListener('window:resize')

@@ -5,6 +5,7 @@ import { ResultBoxComponent } from './components/result-box/result-box.component
 import { FilterComponent } from './components/filter/filter.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { PopUpCreditoComponent } from './components/pop-up-credito/pop-up-credito.component';
 
 
 @Component({
@@ -13,6 +14,7 @@ import { FormsModule } from '@angular/forms';
     SearchBoxComponent,
     ResultBoxComponent,
     FilterComponent,
+    PopUpCreditoComponent,
     CommonModule,
     FormsModule
   ],
