@@ -1,0 +1,51 @@
+<!-- Modal Pop-Up para Crédito -->
+<div class="modal fade" tabindex="-1" id="creditoModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Solicitud de Crédito</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="creditoForm" (ngSubmit)="onSubmit()">
+          <!-- Lista desplegable con opciones de financiamiento -->
+          <div class="mb-3">
+            <label for="financiamiento" class="form-label">Opción de Financiamiento</label>
+            <select class="form-select" id="financiamiento" formControlName="financiamiento">
+              <option value="" disabled>Seleccione una opción</option>
+              <option *ngFor="let option of financiamientoOptions" [value]="option">{{ option }}</option>
+            </select>
+          </div>
+          <!-- Campo para el porcentaje de interés -->
+          <div class="mb-3">
+            <label for="interes" class="form-label">Porcentaje de Interés</label>
+            <input type="number" class="form-control" id="interes" formControlName="interes" min="0" placeholder="Ej: 15">
+          </div>
+          <!-- Checkbox para tipo de interés -->
+          <div class="mb-3">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="ea" formControlName="ea">
+              <label class="form-check-label" for="ea">EA (Efectivo Anual)</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="na" formControlName="na">
+              <label class="form-check-label" for="na">NA (Nominal Anual)</label>
+            </div>
+          </div>
+          <!-- Lista desplegable para plazos -->
+          <div class="mb-3">
+            <label for="plazo" class="form-label">Plazo (meses)</label>
+            <select class="form-select" id="plazo" formControlName="plazo">
+              <option value="" disabled>Seleccione el plazo</option>
+              <option *ngFor="let plazo of plazoOptions" [value]="plazo">{{ plazo }}</option>
+            </select>
+          </div>
+          <!-- Botón de Buscar centrado -->
+          <div class="mb-3 text-center">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
